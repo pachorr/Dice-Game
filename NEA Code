@@ -1,0 +1,297 @@
+import os
+import random
+import time
+import sys
+
+def print_slow(str):  #this is to print off text so it simulates typing (printing slowly)
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.03)
+
+def print_slow2(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.0092)
+print_slow("Welcome to the Dice Game!")
+
+print_slow("\nFor verification purposes, please complete this verification:\n")
+
+print_slow("What is 7+5?\n")
+verify=input()
+answer="12"
+if verify==answer:
+    print_slow("Verification Complete...")
+    time.sleep(0.5)
+    print_slow("\nProceeding to game")
+    time.sleep(0.5)
+    print_slow("\n...\n")
+else:
+    print_slow("\nVerification incomplete\nClosing Program...")
+    sys.exit()
+
+
+#Scores
+playerone=0
+playertwo=0
+#Variables
+dicea=[1,2,3,4,5,6]
+diceb=[1,2,3,4,5,6]
+game=0
+
+print_slow2("██████╗ ██╗ ██████╗███████╗     ██████╗  █████╗ ███╗   ███╗███████╗\n")
+print_slow2("██╔══██╗██║██╔════╝██╔════╝    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝\n")
+print_slow2("██║  ██║██║██║     █████╗      ██║  ███╗███████║██╔████╔██║█████╗ \n") 
+print_slow2("██║  ██║██║██║     ██╔══╝      ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝ \n") 
+print_slow2("██████╔╝██║╚██████╗███████╗    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗\n")
+print_slow2("╚═════╝ ╚═╝ ╚═════╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝")
+                                                                   
+                                                                   
+
+print_slow2("\nby Oliver Parker\n")
+
+time.sleep(0.5)
+
+print_slow("\nPlayer One")
+print_slow("\n==================================================\n")
+while game<5:
+    game=game+1
+    time.sleep(1)
+    print("Round",game)
+    time.sleep(0.5)
+    print("Score:",playerone)
+    
+    rolla=random.choice(dicea)
+    rollb=random.choice(diceb)
+    total=rolla+rollb
+    playerone=playerone+total
+    time.sleep(0.1)
+    print()
+    print("Rolling....")
+    print()
+    time.sleep(0.1)
+    print()
+    time.sleep(1)
+    print(rolla)
+    time.sleep(0.25)
+    print(rollb)
+    if rolla==rollb:
+        time.sleep(1)
+        print("You rolled a double, rolling one more die")
+        rolla=random.choice(dicea)
+        time.sleep(0.2)
+        print("You rolled a",rolla)
+        time.sleep(0.25)
+        total=total+rolla
+    time.sleep(1)
+    print("Your total for that round was",total)
+    print()
+ 
+    if total % 2==0:
+        time.sleep(2)
+        print("Total was even, adding 10 points")
+        playerone=playerone+10
+        time.sleep(1)
+        print("Score for Round",game,":",playerone)
+        print("==================================================")
+
+               
+    else:
+        time.sleep(2)
+        print("Total was odd, deducting 5 points")
+        playerone=playerone-5
+        time.sleep(1)
+        print("Score for Round",game,":",playerone)
+        print("==================================================")
+        if playerone<0:
+            playerone=0
+            time.sleep(1)
+            print("Score for Round",game,":",playerone)
+            print("==================================================")
+
+            
+
+
+time.sleep(2)
+print()
+print()
+print("Player 1's turn is over")
+
+
+
+time.sleep(0.5)
+game=0
+print("Player Two")
+while game<5:
+    game=game+1
+    time.sleep(1)
+    print("Round",game)
+    time.sleep(0.5)
+    print("Score:",playertwo)
+
+    rolla=random.choice(dicea)
+    rollb=random.choice(diceb)
+    total=rolla+rollb
+    playertwo=playertwo+total
+    print()
+    time.sleep(0.3)
+    print("Rolling....")
+    print()
+    print()
+    time.sleep(1)
+    print(rolla)
+    time.sleep(0.25)
+    print(rollb)
+    if rolla==rollb:
+        time.sleep(1)
+        print("You rolled a double, rolling one more die")
+        rolla=random.choice(dicea)
+        time.sleep(0.2)
+        print("You rolled a",rolla)
+        time.sleep(0.25)
+        total=total+rolla
+    time.sleep(1)
+    print("Your total for that round was",total)
+    print()
+    if total % 2==0:
+        time.sleep(0.5)
+        print("EVEN NUMBER ADDING 10")
+        time.sleep(0.5)
+        playertwo=playertwo+10
+        time.sleep(0.25)
+        print("New Score-",playertwo)
+    else:
+        time.sleep(0.5)
+        print("ODD NUMBER TAKING 5")
+        playertwo=playertwo-5
+        time.sleep(0.1)
+        print("New Score-",playertwo)
+        if playertwo<0:
+            playertwo=0
+            time.sleep(0.5)
+            print("New Score-",playertwo)
+
+
+time.sleep(1)
+print()
+print("==========================================================")
+print("End of 5 Rounds for Player 2")
+print("Final Score for Player 2:\n",playertwo)
+
+
+time.sleep(2.5)
+print("SCORING:")
+print("Player 1 FINAL SCORE-",playerone)
+print("PLAYER 2 FINAL SCORE-",playertwo)
+print()
+print()
+print("Calculating Winner...")
+time.sleep(0.5)
+
+
+if playerone>playertwo:
+    time.sleep(1)
+    print("Player One Winner!!!")
+    time.sleep(0.25)
+    name=input("Please enter a name for the score board: ")
+    scoring=open("scoring.txt","a")
+    scoring.write("Name:"+name+" their score was:"+str(playerone)+"\n")
+    scoring.close()
+
+
+
+elif playerone==playertwo:
+    time.sleep(1)
+    print()
+    print()
+    print("Sudden death") #need to finish this and add sudden death
+    while playerone==playertwo:
+        time.sleep(0.25)
+        print("Player 1:")
+        rolla=random.choice(dicea)
+        rollb=random.choice(diceb)
+        total=rolla+rollb
+        playerone=playerone+total
+        time.sleep(1)
+        print("Rolling...")
+        time.sleep(0.25)
+        print()
+        print(rolla)
+        time.sleep(0.25)
+        print(rollb)
+        print()
+        time.sleep(1)
+        print("Total was",total)
+        print()
+        time.sleep(0.5)
+        print("Player 2:")
+        rolla=random.choice(dicea)
+        rollb=random.choice(diceb)
+        total=rolla+rollb
+        playertwo=playertwo+total
+        time.sleep(1)
+        print("Rolling...")
+        time.sleep(0.25)
+        print()
+        print(rolla)
+        time.sleep(0.25)
+        print(rollb)
+        print()
+        time.sleep(1)
+        print("Total was",total)
+        print()
+        print("The final scores are...\nPlayer 1-",playerone,"\nPlayer 2-",playertwo)
+        time.sleep(0.5)
+        print()
+        print()
+        if playerone>playertwo:
+            time.sleep(1)
+            print("Player One Winner!!!")
+            time.sleep(0.25)
+            name=input("Please enter a name for the score board: ")
+            scoring=open("scoring.txt","a")
+            scoring.write("Name:"+name+" their score was:"+str(playerone)+"\n")
+            scoring.close()
+            break
+        elif playertwo>playerone:
+            time.sleep(1)
+            print("Player Two Winner!!!")
+            time.sleep(0.5)
+            name=input("Please enter a name for the score board: ")
+            scoring=open("scoring.txt","a")
+            scoring.write("Name:"+name+" their score was:"+str(playertwo)+"\n")
+            scoring.close()
+            break
+
+ 
+else:
+    time.sleep(1)
+    print("Player Two Winner!!!")
+    time.sleep(0.5)
+    name=input("Please enter a name for the score board: ")
+    scoring=open("scoring.txt","a")
+    scoring.write("Name: "+name+" their score was: "+str(playertwo)+"\n")
+    scoring.close()
+
+
+time.sleep(1)
+time.sleep(2)
+print("getting leaderboard...")
+print()
+print("============================================================")
+f = open("scoring.txt")
+for line in f:
+    print (line)
+f.close()
+time.sleep(0.5)
+print("============================================================")
+time.sleep(2)
+print()
+print("Thanks for playing!")
+time.sleep(10)
+sys.exit()
+
+
+
+
